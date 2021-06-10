@@ -1,0 +1,97 @@
+.profilePage {
+    display: flex;
+    background: wheat;
+    /*background: #F9F9F9;*/
+    height: 92vh;
+}
+
+.noRepoText {
+    height: 31px;
+    font-family: Inter, serif;
+    font-size: 22px;
+    color: #808080;
+}
+
+.noRepoWrapper {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+    padding-left: 56px;
+    margin: 28px 0;
+}
+
+.reposWrapper {
+    width: 100%;
+}
+
+.paginateWrapper {
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-end;
+    margin-right: 56px;
+    padding-left: 24px;
+}
+
+.page,
+.brake {
+    margin: 0 12px;
+    cursor: pointer;
+    font-family: Inter, serif;
+    font-size: 14px;
+    color: #808080;
+    line-height: 25px;
+}
+
+.nextLi,
+.previousLi {
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.nextLi.disabledPrevNext,
+.previousLi.disabledPrevNext {
+    cursor: default;
+}
+
+.disabledPrevNext svg path {
+    stroke: #808080;
+}
+
+.active {
+    width: 21px;
+    height: 25px;
+    background-color: #0064EB;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.reposWithPages {
+    flex-basis: 100%;
+}
+
+.range{
+    padding-top: 6px;
+}
+
+.pagesWrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.range p {
+    font-family: Inter, serif;
+    font-size: 14px;
+    color: #808080;
+}

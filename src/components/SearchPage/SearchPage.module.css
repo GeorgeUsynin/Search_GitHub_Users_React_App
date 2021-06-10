@@ -1,0 +1,26 @@
+.searchPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background: #F9F9F9;*/
+    background: wheat;
+    height: 92vh;
+}
+
+.textWrapper{
+    width: 210px;
+}
+
+.textWrapper p{
+    font-family: Inter, serif;
+    font-size: 22px;
+    line-height: 140%;
+    color: #808080;
+    text-align: center;
+}
+
+.image img{
+    height: 66px;
+    width: 66px;
+}

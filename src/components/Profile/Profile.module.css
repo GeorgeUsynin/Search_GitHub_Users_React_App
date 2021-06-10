@@ -1,0 +1,50 @@
+.avatarImage img{
+    width: 280px;
+    height: 280px;
+    margin-bottom: 29px;
+    border-radius: 50%;
+}
+
+.login{
+    height: 34px;
+    font-family: Inter, serif;
+    font-weight: 600;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.profileWrapper a {
+    text-decoration: none;
+    color: black;
+}
+
+.bio{
+    font-family: Inter, serif;
+    font-size: 18px;
+    line-height: 22px;
+    color: #0064EB;
+    margin-bottom: 25px;
+}
+
+.profileWrapper{
+    margin: 39px 57px;
+}
+
+.followWrapper{
+    display: flex;
+}
+
+.followWrapper div:first-child{
+    padding-left: 26px;
+    background-image: url("../../assets/images/group.png");
+    background-repeat: no-repeat;
+    background-position: 0px 3px;
+    margin-right: 20px;
+}
+.followWrapper div:last-child{
+    padding-left: 24px;
+    background-image: url("../../assets/images/person.png");
+    background-repeat: no-repeat;
+    background-position: 5px 2px;
+}

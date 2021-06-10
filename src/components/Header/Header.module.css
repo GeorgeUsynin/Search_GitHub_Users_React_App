@@ -1,0 +1,36 @@
+.header {
+    height: 8vh;
+    background-color: #0064EB;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.gitCat {
+    margin-right: 22px;
+    margin-left: 41px;
+}
+
+.gitCat img {
+    width: 40px;
+    height: 40px;
+}
+
+.search {
+    height: 40px;
+    width: 500px;
+    font-family: Inter, serif;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    border: 1px solid white;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 0 0 45px;
+    background-image: url("../../assets/images/lens2.svg");
+    background-repeat: no-repeat;
+    background-position: 19px 13px;
+}
+.search::placeholder {
+    color: #808080;
+}
