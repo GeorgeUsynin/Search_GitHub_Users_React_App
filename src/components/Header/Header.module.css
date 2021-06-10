@@ -34,3 +34,30 @@
 .search::placeholder {
     color: #808080;
 }
+
+@media only all and (max-width: 960px){
+    .searchWrapper{
+        display: flex;
+        width: 85%;
+    }
+    .search{
+        width: 85%;
+    }
+}
+
+@media only all and (max-width: 960px){
+    .gitCat {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+@media only all and (max-width: 640px){
+    .search{
+        padding: 0 0 0 30px;
+        background-image: url("../../assets/images/lens2.svg");
+        background-repeat: no-repeat;
+        background-position: 9px 13px;
+        font-size: 12px;
+    }
+}

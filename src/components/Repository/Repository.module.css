@@ -28,3 +28,16 @@
     flex-direction: column;
     display: flex;
 }
+
+@media only all and (max-width: 640px){
+    .repoWrapper{
+        margin: 18px 20px;
+    }
+    .description{
+        padding: 0 10px;
+    }
+
+    .name {
+        padding: 0 10px;
+    }
+}

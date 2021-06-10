@@ -41,7 +41,7 @@ export const Header = () => {
             <div className={cls.gitCat}>
                 <NavLink to={'/searchpage'}><img src={gitCat} alt="gitCat"/></NavLink>
             </div>
-            <div>
+            <div className={cls.searchWrapper}>
                 <input
                     value={userName}
                     onChange={onChangeHandler}

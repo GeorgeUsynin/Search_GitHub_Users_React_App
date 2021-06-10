@@ -1,3 +1,7 @@
+.avatarImage{
+    margin: 0 auto;
+}
+
 .avatarImage img{
     width: 280px;
     height: 280px;
@@ -47,4 +51,20 @@
     background-image: url("../../assets/images/person.png");
     background-repeat: no-repeat;
     background-position: 5px 2px;
+}
+
+@media only all and (max-width: 960px){
+    .profileWrapper{
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media only all and (max-width: 640px){
+    .profileWrapper{
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 10px;
+    }
 }
