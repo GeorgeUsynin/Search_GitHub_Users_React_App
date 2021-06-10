@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 92vh;
+    min-height: 732px;
     background: #F9F9F9;
 }
 

@@ -1,7 +1,7 @@
 .profilePage {
     display: flex;
     background: #F9F9F9;
-    height: 92vh;
+    min-height: 732px;
 }
 
 .noRepoText {
