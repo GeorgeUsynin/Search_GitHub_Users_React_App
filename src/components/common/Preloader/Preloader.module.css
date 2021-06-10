@@ -1,9 +1,10 @@
 .loaderWrapper{
-    height: 92vh;
+    min-height: 732px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #F9F9F9;
 }
 
 .loader {
