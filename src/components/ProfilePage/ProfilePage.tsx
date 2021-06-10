@@ -74,7 +74,7 @@ export const ProfilePage = () => {
                                     {
                                         isFetchingRepos
                                             ?
-                                            <Preloader/>
+                                            <Preloader />
                                             :
                                             <div className={cls.reposWrapper}>
                                                 <p className={cls.heading}>{`Repositories(${publicRepos})`}</p>

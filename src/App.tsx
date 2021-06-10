@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import './App.module.css';
 import {Header} from "./components/Header/Header";
 import {SearchPage} from "./components/SearchPage/SearchPage";
@@ -9,16 +9,14 @@ import cls from "./App.module.css"
 
 
 function App() {
-
-
     return (
         <div className={cls.appWrapper}>
             <Header/>
             <div>
-                <Switch><Route exact path={'/'} render={() => <Redirect to={'/searchpage'}/>}/></Switch>
-                <Switch><Route path="/searchpage" render={() => <SearchPage/>}/></Switch>
-                <Switch><Route path="/usernotfound" render={() => <UserNotFoundPage/>}/></Switch>
-                <Switch><Route path="/profile/:username" render={() => <ProfilePage/>}/></Switch>
+                <Route exact path={'/'} render={() => <Redirect to={'/searchpage'}/>}/>
+                <Route path="/searchpage" render={() => <SearchPage/>}/>
+                <Route path="/usernotfound" render={() => <UserNotFoundPage/>}/>
+                <Route path="/profile/:username" render={() => <ProfilePage/>}/>
             </div>
 
         </div>

@@ -7,6 +7,7 @@ const SET_USER = 'SET_USER'
 const SET_REPOS = 'SET_REPOS'
 const SET_IS_FETCHING_PROFILE = 'SET_IS_FETCHING_PROFILE'
 const SET_IS_FETCHING_REPOS = 'SET_IS_FETCHING_REPOS'
+const SET_IS_FETCHING_PHOTO = 'SET_IS_FETCHING_PHOTO'
 const SET_IS_NOT_FOUND = 'SET_IS_NOT_FOUND'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
@@ -19,12 +20,14 @@ export type ProfileActionsType =
     | ReturnType<typeof setIsFetchingRepos>
     | ReturnType<typeof setIsNotFound>
     | ReturnType<typeof setCurrentPage>
+    | ReturnType<typeof setIsFetchingPhoto>
 
 
 export type ProfileStateType = {
     repos: Array<RepoType> | null
     user: UserType | null
     isFetchingProfile: boolean
+    isFetchingPhoto: boolean
     isFetchingRepos: boolean
     isNotFound: boolean
     perPage: number
@@ -53,6 +56,7 @@ const initialState: ProfileStateType = {
     repos: null,
     isFetchingProfile: false,
     isFetchingRepos: false,
+    isFetchingPhoto: false,
     isNotFound: false,
     perPage: 4,
     currentPage: 1
@@ -95,6 +99,14 @@ export const setIsFetchingRepos = (isFetchingRepos: boolean) => {
         }
     } as const
 }
+export const setIsFetchingPhoto = (isFetchingPhoto: boolean) => {
+    return {
+        type: SET_IS_FETCHING_PHOTO,
+        payload: {
+            isFetchingPhoto
+        }
+    } as const
+}
 
 export const setIsNotFound = (isNotFound: boolean) => {
     return {
@@ -124,6 +136,7 @@ export const profileReducer = (state: ProfileStateType = initialState, action: P
         case SET_IS_NOT_FOUND:
         case SET_CURRENT_PAGE:
         case SET_IS_FETCHING_REPOS:
+        case SET_IS_FETCHING_PHOTO:
             return {
                 ...state, ...action.payload
             }
