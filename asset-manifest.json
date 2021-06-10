@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Search_GitHub_Users_React_App/static/css/main.4560bbc2.chunk.css",
-    "main.js": "/Search_GitHub_Users_React_App/static/js/main.84c6ce91.chunk.js",
-    "main.js.map": "/Search_GitHub_Users_React_App/static/js/main.84c6ce91.chunk.js.map",
-    "runtime-main.js": "/Search_GitHub_Users_React_App/static/js/runtime-main.5686cef2.js",
-    "runtime-main.js.map": "/Search_GitHub_Users_React_App/static/js/runtime-main.5686cef2.js.map",
-    "static/js/2.5619c8ed.chunk.js": "/Search_GitHub_Users_React_App/static/js/2.5619c8ed.chunk.js",
-    "static/js/2.5619c8ed.chunk.js.map": "/Search_GitHub_Users_React_App/static/js/2.5619c8ed.chunk.js.map",
-    "static/js/3.c6c93811.chunk.js": "/Search_GitHub_Users_React_App/static/js/3.c6c93811.chunk.js",
-    "static/js/3.c6c93811.chunk.js.map": "/Search_GitHub_Users_React_App/static/js/3.c6c93811.chunk.js.map",
+    "main.css": "/Search_GitHub_Users_React_App/static/css/main.0c8864a3.chunk.css",
+    "main.js": "/Search_GitHub_Users_React_App/static/js/main.c2ea2308.chunk.js",
+    "main.js.map": "/Search_GitHub_Users_React_App/static/js/main.c2ea2308.chunk.js.map",
+    "runtime-main.js": "/Search_GitHub_Users_React_App/static/js/runtime-main.21698b29.js",
+    "runtime-main.js.map": "/Search_GitHub_Users_React_App/static/js/runtime-main.21698b29.js.map",
+    "static/js/2.f074bfbb.chunk.js": "/Search_GitHub_Users_React_App/static/js/2.f074bfbb.chunk.js",
+    "static/js/2.f074bfbb.chunk.js.map": "/Search_GitHub_Users_React_App/static/js/2.f074bfbb.chunk.js.map",
+    "static/js/3.b3f1cde3.chunk.js": "/Search_GitHub_Users_React_App/static/js/3.b3f1cde3.chunk.js",
+    "static/js/3.b3f1cde3.chunk.js.map": "/Search_GitHub_Users_React_App/static/js/3.b3f1cde3.chunk.js.map",
     "index.html": "/Search_GitHub_Users_React_App/index.html",
-    "static/css/main.4560bbc2.chunk.css.map": "/Search_GitHub_Users_React_App/static/css/main.4560bbc2.chunk.css.map",
-    "static/js/2.5619c8ed.chunk.js.LICENSE.txt": "/Search_GitHub_Users_React_App/static/js/2.5619c8ed.chunk.js.LICENSE.txt",
+    "static/css/main.0c8864a3.chunk.css.map": "/Search_GitHub_Users_React_App/static/css/main.0c8864a3.chunk.css.map",
+    "static/js/2.f074bfbb.chunk.js.LICENSE.txt": "/Search_GitHub_Users_React_App/static/js/2.f074bfbb.chunk.js.LICENSE.txt",
     "static/media/gitCat.1ee5d17e.svg": "/Search_GitHub_Users_React_App/static/media/gitCat.1ee5d17e.svg",
     "static/media/Header.module.css": "/Search_GitHub_Users_React_App/static/media/lens2.5e71efd5.svg",
     "static/media/user.8fe7b3bb.svg": "/Search_GitHub_Users_React_App/static/media/user.8fe7b3bb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5686cef2.js",
-    "static/js/2.5619c8ed.chunk.js",
-    "static/css/main.4560bbc2.chunk.css",
-    "static/js/main.84c6ce91.chunk.js"
+    "static/js/runtime-main.21698b29.js",
+    "static/js/2.f074bfbb.chunk.js",
+    "static/css/main.0c8864a3.chunk.css",
+    "static/js/main.c2ea2308.chunk.js"
   ]
 }
