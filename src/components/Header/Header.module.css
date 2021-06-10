@@ -38,10 +38,10 @@
 @media only all and (max-width: 960px){
     .searchWrapper{
         display: flex;
-        width: 85%;
+        width: 80%;
     }
     .search{
-        width: 85%;
+        width: 80%;
     }
 }
 
