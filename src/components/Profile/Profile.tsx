@@ -3,7 +3,6 @@ import cls from './Profile.module.css'
 import {setIsFetchingPhoto, UserType} from "../../redux/profile-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/redux-store";
-import {Preloader} from "../common/Preloader/Preloader";
 import {PreloaderForPhoto} from "../common/Preloader/PreloaderForPhoto";
 
 export const Profile: React.FC<{ user: UserType | null }> = React.memo(({user}) => {
@@ -17,9 +16,6 @@ export const Profile: React.FC<{ user: UserType | null }> = React.memo(({user}) 
 
     useEffect(() => {
         dispatch(setIsFetchingPhoto(true))
-        setTimeout(() => {
-            dispatch(setIsFetchingPhoto(false))
-        }, 3000)
     }, [])
 
 
@@ -47,13 +43,17 @@ export const Profile: React.FC<{ user: UserType | null }> = React.memo(({user}) 
             <div className={cls.avatarImage}>
                 {
                     isFetchingPhoto
-                        ?
-                        <PreloaderForPhoto />
-                        :
-                        <img
-                            src={user.avatar_url ? user.avatar_url : ''}
-                            alt="avatar"/>
+                    &&
+                    <PreloaderForPhoto/>
                 }
+                <img
+                    style={{visibility: isFetchingPhoto ? 'hidden' : 'visible'}}
+                    src={user.avatar_url ? user.avatar_url : ''}
+                    alt="avatar"
+                    onLoad={() => {
+                        dispatch(setIsFetchingPhoto(false))
+                    }}
+                />
             </div>
 
             <a href={user.html_url ? user.html_url : ''} target={'_blank'}><p

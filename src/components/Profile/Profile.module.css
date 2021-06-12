@@ -58,6 +58,13 @@
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bio, .login {
+        text-align: center;
     }
 }
 
