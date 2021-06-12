@@ -42,9 +42,7 @@ export const Profile: React.FC<{ user: UserType | null }> = React.memo(({user}) 
 
             <div className={cls.avatarImage}>
                 {
-                    isFetchingPhoto
-                    &&
-                    <PreloaderForPhoto/>
+                    isFetchingPhoto && <PreloaderForPhoto/>
                 }
                 <img
                     style={{visibility: isFetchingPhoto ? 'hidden' : 'visible'}}

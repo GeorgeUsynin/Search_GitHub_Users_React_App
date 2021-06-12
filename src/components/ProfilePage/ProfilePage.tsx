@@ -71,13 +71,13 @@ export const ProfilePage = () => {
                             repos && repos.length !== 0
                                 ?
                                 <div className={cls.reposWithPages}>
+                                    <p className={cls.heading}>{`Repositories(${publicRepos})`}</p>
                                     {
                                         isFetchingRepos
                                             ?
-                                            <Preloader />
+                                            <Preloader/>
                                             :
                                             <div className={cls.reposWrapper}>
-                                                <p className={cls.heading}>{`Repositories(${publicRepos})`}</p>
                                                 {mappedRepos}
                                             </div>
                                     }
