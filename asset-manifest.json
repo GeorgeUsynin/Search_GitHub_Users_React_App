@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/search-GitHub-users-react-redux-app/static/css/main.4dc6989d.chunk.css",
+    "main.css": "/search-GitHub-users-react-redux-app/static/css/main.708666c2.chunk.css",
     "main.js": "/search-GitHub-users-react-redux-app/static/js/main.701c1f4d.chunk.js",
     "main.js.map": "/search-GitHub-users-react-redux-app/static/js/main.701c1f4d.chunk.js.map",
     "runtime-main.js": "/search-GitHub-users-react-redux-app/static/js/runtime-main.6679a6c2.js",
@@ -10,7 +10,7 @@
     "static/js/3.dcb0413c.chunk.js": "/search-GitHub-users-react-redux-app/static/js/3.dcb0413c.chunk.js",
     "static/js/3.dcb0413c.chunk.js.map": "/search-GitHub-users-react-redux-app/static/js/3.dcb0413c.chunk.js.map",
     "index.html": "/search-GitHub-users-react-redux-app/index.html",
-    "static/css/main.4dc6989d.chunk.css.map": "/search-GitHub-users-react-redux-app/static/css/main.4dc6989d.chunk.css.map",
+    "static/css/main.708666c2.chunk.css.map": "/search-GitHub-users-react-redux-app/static/css/main.708666c2.chunk.css.map",
     "static/js/2.33c25182.chunk.js.LICENSE.txt": "/search-GitHub-users-react-redux-app/static/js/2.33c25182.chunk.js.LICENSE.txt",
     "static/media/gitCat.1ee5d17e.svg": "/search-GitHub-users-react-redux-app/static/media/gitCat.1ee5d17e.svg",
     "static/media/Header.module.css": "/search-GitHub-users-react-redux-app/static/media/lens2.5e71efd5.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.6679a6c2.js",
     "static/js/2.33c25182.chunk.js",
-    "static/css/main.4dc6989d.chunk.css",
+    "static/css/main.708666c2.chunk.css",
     "static/js/main.701c1f4d.chunk.js"
   ]
 }
