@@ -10,6 +10,7 @@ import noRepo from "./../../assets/images/noRepo.png"
 import {Repository} from "../Repository/Repository";
 import ReactPaginate from 'react-paginate';
 import {leftArrow, rightArrow} from "../../assets/pageArrows";
+import {PreloaderForRepos} from "../common/Preloader/PreloaderForRepos";
 
 export const ProfilePage = () => {
 
@@ -75,7 +76,7 @@ export const ProfilePage = () => {
                                     {
                                         isFetchingRepos
                                             ?
-                                            <Preloader/>
+                                            <PreloaderForRepos/>
                                             :
                                             <div className={cls.reposWrapper}>
                                                 {mappedRepos}

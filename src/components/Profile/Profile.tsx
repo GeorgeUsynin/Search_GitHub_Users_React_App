@@ -45,7 +45,7 @@ export const Profile: React.FC<{ user: UserType | null }> = React.memo(({user}) 
                     isFetchingPhoto && <PreloaderForPhoto/>
                 }
                 <img
-                    style={{visibility: isFetchingPhoto ? 'hidden' : 'visible'}}
+                    style={{display: isFetchingPhoto ? 'none' : 'block'}}
                     src={user.avatar_url ? user.avatar_url : ''}
                     alt="avatar"
                     onLoad={() => {
