@@ -1,5 +1,7 @@
 .avatarImage{
     margin: 0 auto;
+    width: 280px;
+    height: 280px;
 }
 
 .avatarImage img{
