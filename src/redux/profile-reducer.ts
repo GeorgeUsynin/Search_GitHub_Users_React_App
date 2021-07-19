@@ -1,29 +1,7 @@
 import {usersAPI} from "../api/api";
-import {AppThunkType} from "./redux-store";
+import {createSlice, Dispatch, PayloadAction} from "@reduxjs/toolkit";
 
-//action types
-
-const SET_USER = 'SET_USER'
-const SET_REPOS = 'SET_REPOS'
-const SET_IS_FETCHING_PROFILE = 'SET_IS_FETCHING_PROFILE'
-const SET_IS_FETCHING_REPOS = 'SET_IS_FETCHING_REPOS'
-const SET_IS_FETCHING_PHOTO = 'SET_IS_FETCHING_PHOTO'
-const SET_IS_NOT_FOUND = 'SET_IS_NOT_FOUND'
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-
-//types
-
-export type ProfileActionsType =
-    ReturnType<typeof setUser>
-    | ReturnType<typeof setRepos>
-    | ReturnType<typeof setIsFetchingProfile>
-    | ReturnType<typeof setIsFetchingRepos>
-    | ReturnType<typeof setIsNotFound>
-    | ReturnType<typeof setCurrentPage>
-    | ReturnType<typeof setIsFetchingPhoto>
-
-
-export type ProfileStateType = {
+export type InitialStateType = {
     repos: Array<RepoType> | null
     user: UserType | null
     isFetchingProfile: boolean
@@ -51,7 +29,7 @@ export type RepoType = {
     id: number | null
 }
 
-const initialState: ProfileStateType = {
+const initialState: InitialStateType = {
     user: null,
     repos: null,
     isFetchingProfile: false,
@@ -62,92 +40,50 @@ const initialState: ProfileStateType = {
     currentPage: 1
 }
 
-//actions
-
-export const setUser = (user: UserType | null) => {
-    return {
-        type: SET_USER,
-        payload: {
-            user
+const slice = createSlice({
+    name: "profile",
+    initialState,
+    reducers: {
+        setUser(state, action: PayloadAction<UserType | null>) {
+            state.user = action.payload
+        },
+        setRepos(state, action: PayloadAction<Array<RepoType> | null>) {
+            state.repos = action.payload
+        },
+        setIsFetchingProfile(state, action: PayloadAction<boolean>) {
+            state.isFetchingProfile = action.payload
+        },
+        setIsFetchingRepos(state, action: PayloadAction<boolean>) {
+            state.isFetchingRepos = action.payload
+        },
+        setIsFetchingPhoto(state, action: PayloadAction<boolean>) {
+            state.isFetchingPhoto = action.payload
+        },
+        setIsNotFound(state, action: PayloadAction<boolean>) {
+            state.isNotFound = action.payload
+        },
+        setCurrentPage(state, action: PayloadAction<number>) {
+            state.currentPage = action.payload
         }
-    } as const
-}
-
-export const setRepos = (repos: Array<RepoType> | null) => {
-    return {
-        type: SET_REPOS,
-        payload: {
-            repos
-        }
-    } as const
-}
-
-export const setIsFetchingProfile = (isFetchingProfile: boolean) => {
-    return {
-        type: SET_IS_FETCHING_PROFILE,
-        payload: {
-            isFetchingProfile
-        }
-    } as const
-}
-
-export const setIsFetchingRepos = (isFetchingRepos: boolean) => {
-    return {
-        type: SET_IS_FETCHING_REPOS,
-        payload: {
-            isFetchingRepos
-        }
-    } as const
-}
-export const setIsFetchingPhoto = (isFetchingPhoto: boolean) => {
-    return {
-        type: SET_IS_FETCHING_PHOTO,
-        payload: {
-            isFetchingPhoto
-        }
-    } as const
-}
-
-export const setIsNotFound = (isNotFound: boolean) => {
-    return {
-        type: SET_IS_NOT_FOUND,
-        payload: {
-            isNotFound
-        }
-    } as const
-}
-
-export const setCurrentPage = (currentPage: number) => {
-    return {
-        type: SET_CURRENT_PAGE,
-        payload: {
-            currentPage
-        }
-    } as const
-}
-
-//reducer
-
-export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionsType): ProfileStateType => {
-    switch (action.type) {
-        case SET_USER:
-        case SET_REPOS:
-        case SET_IS_FETCHING_PROFILE:
-        case SET_IS_NOT_FOUND:
-        case SET_CURRENT_PAGE:
-        case SET_IS_FETCHING_REPOS:
-        case SET_IS_FETCHING_PHOTO:
-            return {
-                ...state, ...action.payload
-            }
-        default:
-            return state
     }
-}
+})
+
+export const {
+    setUser,
+    setCurrentPage,
+    setIsFetchingPhoto,
+    setIsFetchingRepos,
+    setIsFetchingProfile,
+    setRepos,
+    setIsNotFound
+} = slice.actions
+
+
+export const profileReducer = slice.reducer
 
 //thunks
 
-export const getUser = (userName: string, perPage: number, page: number): AppThunkType => (dispatch) => {
+export const getUser = (userName: string, perPage: number, page: number) => (dispatch: Dispatch) => {
     dispatch(setIsFetchingProfile(true))
 
     let promises = [usersAPI.getUser(userName), usersAPI.getRepos(userName, perPage, page)]
@@ -164,7 +100,7 @@ export const getUser = (userName: string, perPage: number, page: number): AppThu
         })
 }
 
-export const getUserRepos = (userName: string, perPage: number, page: number): AppThunkType => (dispatch) => {
+export const getUserRepos = (userName: string, perPage: number, page: number) => (dispatch: Dispatch) => {
     dispatch(setIsFetchingRepos(true))
     usersAPI.getRepos(userName, perPage, page)
         .then(userRepos => {

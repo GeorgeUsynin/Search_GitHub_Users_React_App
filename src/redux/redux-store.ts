@@ -1,20 +1,21 @@
-import { applyMiddleware } from "redux";
-import {combineReducers, createStore} from "redux";
-import thunk, { ThunkAction } from "redux-thunk";
-import {ProfileActionsType, profileReducer} from "./profile-reducer";
+import {combineReducers} from "redux";
+import {profileReducer} from "./profile-reducer";
+import {configureStore} from "@reduxjs/toolkit";
 
 
 const rootReducer = combineReducers ({
     profile: profileReducer
 })
 
-//type of all actions
-export type AppActionsType = ProfileActionsType
+// //type of all actions
+// export type AppActionsType = any
+//
+// //if we want to use thunk inside thunk we need to use this type
+// export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, AppActionsType>
 
-//if we want to use thunk inside thunk we need to use this type
-export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, AppActionsType>
-
-const store = createStore(rootReducer,applyMiddleware(thunk))
+const store = configureStore({
+    reducer: rootReducer
+})
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
