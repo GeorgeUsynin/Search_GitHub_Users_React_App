@@ -1,16 +1,16 @@
-import React, {useEffect} from "react";
-import {Profile} from "../Profile/Profile";
+import React, {useEffect} from 'react';
+import {Profile} from '../Profile/Profile';
 import cls from './ProfilePage.module.css'
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/redux-store";
-import {Preloader} from "../common/Preloader/Preloader";
-import {getUser, getUserRepos, RepoType, UserType} from "../../redux/profile-reducer";
-import {useParams} from "react-router-dom";
-import noRepo from "./../../assets/images/noRepo.png"
-import {Repository} from "../Repository/Repository";
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from '../../redux/redux-store';
+import {Preloader} from '../common/Preloader/Preloader';
+import {getUser, getUserRepos, RepoType, setCurrentPage, UserType} from '../../redux/profile-reducer';
+import {useParams} from 'react-router-dom';
+import noRepo from './../../assets/images/noRepo.png'
+import {Repository} from '../Repository/Repository';
 import ReactPaginate from 'react-paginate';
-import {leftArrow, rightArrow} from "../../assets/pageArrows";
-import {PreloaderForRepos} from "../common/Preloader/PreloaderForRepos";
+import {leftArrow, rightArrow} from '../../assets/pageArrows';
+import {PreloaderForRepos} from '../common/Preloader/PreloaderForRepos';
 
 export const ProfilePage = () => {
 
@@ -36,8 +36,14 @@ export const ProfilePage = () => {
     //async
 
     useEffect(() => {
-        dispatch(getUser(username, perPage, currentPage))
+        dispatch(getUser(username))
     }, [username])
+
+
+    useEffect(() => {
+        dispatch(getUserRepos({}))
+    }, [user,currentPage])
+
 
     //other helpful variables
 
@@ -54,7 +60,7 @@ export const ProfilePage = () => {
     //handlers
 
     const onPageChangeHandler = (selectedPage: { selected: number }) => {
-        dispatch(getUserRepos(username, perPage, selectedPage.selected + 1))
+        dispatch(setCurrentPage(selectedPage.selected + 1))
     }
 
     //UI

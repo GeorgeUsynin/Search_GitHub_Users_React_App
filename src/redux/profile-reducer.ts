@@ -1,5 +1,6 @@
-import {usersAPI} from "../api/api";
-import {createSlice, Dispatch, PayloadAction} from "@reduxjs/toolkit";
+import {usersAPI} from '../api/api';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {AppDispatch, AppRootStateType} from './redux-store';
 
 export type InitialStateType = {
     repos: Array<RepoType> | null
@@ -40,16 +41,38 @@ const initialState: InitialStateType = {
     currentPage: 1
 }
 
+export const getUser = createAsyncThunk<UserType, string, { dispatch: AppDispatch, state: AppRootStateType }>('profile/setUser', async (userName, thunkAPI) => {
+    thunkAPI.dispatch(setIsFetchingProfile(true))
+    try {
+        return await usersAPI.getUser(userName)
+    } catch (e) {
+        thunkAPI.dispatch(setIsNotFound(true))
+        return null
+    } finally {
+        thunkAPI.dispatch(setIsFetchingProfile(false))
+    }
+})
+export const getUserRepos = createAsyncThunk<Array<RepoType>, {}, { dispatch: AppDispatch, state: AppRootStateType }>('profile/setUserRepos', async ({}, thunkAPI) => {
+
+    thunkAPI.dispatch(setIsFetchingRepos(true))
+
+    const userName = thunkAPI.getState().profile.user?.login
+    const perPage = thunkAPI.getState().profile.perPage
+    const page = thunkAPI.getState().profile.currentPage
+
+    try {
+        if (userName)
+
+            return await usersAPI.getRepos(userName, perPage, page)
+    } finally {
+        thunkAPI.dispatch(setIsFetchingRepos(false))
+    }
+})
+
 const slice = createSlice({
-    name: "profile",
+    name: 'profile',
     initialState,
     reducers: {
-        setUser(state, action: PayloadAction<UserType | null>) {
-            state.user = action.payload
-        },
-        setRepos(state, action: PayloadAction<Array<RepoType> | null>) {
-            state.repos = action.payload
-        },
         setIsFetchingProfile(state, action: PayloadAction<boolean>) {
             state.isFetchingProfile = action.payload
         },
@@ -65,47 +88,23 @@ const slice = createSlice({
         setCurrentPage(state, action: PayloadAction<number>) {
             state.currentPage = action.payload
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getUser.fulfilled, (state, action) => {
+            state.user = action.payload
+        })
+        builder.addCase(getUserRepos.fulfilled, (state, action) => {
+            state.repos = action.payload
+        })
     }
 })
 
 export const {
-    setUser,
     setCurrentPage,
     setIsFetchingPhoto,
     setIsFetchingRepos,
     setIsFetchingProfile,
-    setRepos,
     setIsNotFound
 } = slice.actions
 
-
 export const profileReducer = slice.reducer
-
-//thunks
-
-export const getUser = (userName: string, perPage: number, page: number) => (dispatch: Dispatch) => {
-    dispatch(setIsFetchingProfile(true))
-
-    let promises = [usersAPI.getUser(userName), usersAPI.getRepos(userName, perPage, page)]
-
-    Promise.all(promises)
-        .then(([userData, userRepos]) => {
-            dispatch(setUser(userData))
-            dispatch(setRepos(userRepos))
-            dispatch(setIsFetchingProfile(false))
-        })
-        .catch(error => {
-            dispatch(setUser(null))
-            dispatch(setIsNotFound(true))
-        })
-}
-
-export const getUserRepos = (userName: string, perPage: number, page: number) => (dispatch: Dispatch) => {
-    dispatch(setIsFetchingRepos(true))
-    usersAPI.getRepos(userName, perPage, page)
-        .then(userRepos => {
-            dispatch(setIsFetchingRepos(false))
-            dispatch(setCurrentPage(page))
-            dispatch(setRepos(userRepos))
-        })
-}
