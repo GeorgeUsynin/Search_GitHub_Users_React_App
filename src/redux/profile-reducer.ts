@@ -46,26 +46,20 @@ export const getUser = createAsyncThunk<UserType, string, { dispatch: AppDispatc
     try {
         return await usersAPI.getUser(userName)
     } catch (e) {
-        thunkAPI.dispatch(setIsNotFound(true))
-        return null
-    } finally {
-        thunkAPI.dispatch(setIsFetchingProfile(false))
+        return thunkAPI.rejectWithValue('User not found')
     }
 })
+
+
 export const getUserRepos = createAsyncThunk<Array<RepoType>, {}, { dispatch: AppDispatch, state: AppRootStateType }>('profile/setUserRepos', async ({}, thunkAPI) => {
-
     thunkAPI.dispatch(setIsFetchingRepos(true))
-
     const userName = thunkAPI.getState().profile.user?.login
     const perPage = thunkAPI.getState().profile.perPage
     const page = thunkAPI.getState().profile.currentPage
-
     try {
-        if (userName)
-
-            return await usersAPI.getRepos(userName, perPage, page)
-    } finally {
-        thunkAPI.dispatch(setIsFetchingRepos(false))
+        return await usersAPI.getRepos(userName, perPage, page)
+    } catch (e) {
+        return thunkAPI.rejectWithValue('Repositories not found')
     }
 })
 
@@ -93,8 +87,14 @@ const slice = createSlice({
         builder.addCase(getUser.fulfilled, (state, action) => {
             state.user = action.payload
         })
+        builder.addCase(getUser.rejected, (state, action) => {
+            state.isNotFound = true
+            state.isFetchingProfile = false
+        })
         builder.addCase(getUserRepos.fulfilled, (state, action) => {
             state.repos = action.payload
+            state.isFetchingRepos = false
+            state.isFetchingProfile = false
         })
     }
 })

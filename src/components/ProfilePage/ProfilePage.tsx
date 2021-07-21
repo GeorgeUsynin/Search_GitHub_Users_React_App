@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../redux/redux-store';
 import {Preloader} from '../common/Preloader/Preloader';
 import {getUser, getUserRepos, RepoType, setCurrentPage, UserType} from '../../redux/profile-reducer';
-import {useParams} from 'react-router-dom';
+import {Redirect, useParams} from 'react-router-dom';
 import noRepo from './../../assets/images/noRepo.png'
 import {Repository} from '../Repository/Repository';
 import ReactPaginate from 'react-paginate';
@@ -29,6 +29,8 @@ export const ProfilePage = () => {
 
     const currentPage = useSelector<AppRootStateType, number>(state => state.profile.currentPage)
 
+    const isNotFound = useSelector<AppRootStateType, boolean>(state => state.profile.isNotFound)
+
     const dispatch = useDispatch()
 
     const {username} = useParams<{ username: string }>();
@@ -36,11 +38,13 @@ export const ProfilePage = () => {
     //async
 
     useEffect(() => {
+        debugger
         dispatch(getUser(username))
     }, [username])
 
 
     useEffect(() => {
+        debugger
         dispatch(getUserRepos({}))
     }, [user,currentPage])
 
@@ -64,6 +68,10 @@ export const ProfilePage = () => {
     }
 
     //UI
+
+    if (isNotFound){
+        return <Redirect to={"/usernotfound"}/>
+    }
 
     return (
         <div>
