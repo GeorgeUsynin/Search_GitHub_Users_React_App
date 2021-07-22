@@ -42,7 +42,6 @@ const initialState: InitialStateType = {
 }
 
 export const getUser = createAsyncThunk<UserType, string, { dispatch: AppDispatch, state: AppRootStateType }>('profile/setUser', async (userName, thunkAPI) => {
-    thunkAPI.dispatch(setIsFetchingProfile(true))
     try {
         return await usersAPI.getUser(userName)
     } catch (e) {
@@ -52,7 +51,6 @@ export const getUser = createAsyncThunk<UserType, string, { dispatch: AppDispatc
 
 
 export const getUserRepos = createAsyncThunk<Array<RepoType>, {}, { dispatch: AppDispatch, state: AppRootStateType }>('profile/setUserRepos', async ({}, thunkAPI) => {
-    thunkAPI.dispatch(setIsFetchingRepos(true))
     const userName = thunkAPI.getState().profile.user?.login
     const perPage = thunkAPI.getState().profile.perPage
     const page = thunkAPI.getState().profile.currentPage
@@ -84,12 +82,19 @@ const slice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        builder.addCase(getUser.pending, (state, action) => {
+            state.isFetchingProfile = true
+        })
         builder.addCase(getUser.fulfilled, (state, action) => {
             state.user = action.payload
         })
         builder.addCase(getUser.rejected, (state, action) => {
+            state.user = null
             state.isNotFound = true
             state.isFetchingProfile = false
+        })
+        builder.addCase(getUserRepos.pending, (state, action) => {
+            state.isFetchingRepos = true
         })
         builder.addCase(getUserRepos.fulfilled, (state, action) => {
             state.repos = action.payload
@@ -102,7 +107,6 @@ const slice = createSlice({
 export const {
     setCurrentPage,
     setIsFetchingPhoto,
-    setIsFetchingRepos,
     setIsFetchingProfile,
     setIsNotFound
 } = slice.actions

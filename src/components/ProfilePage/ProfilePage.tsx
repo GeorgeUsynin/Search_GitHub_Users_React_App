@@ -38,13 +38,11 @@ export const ProfilePage = () => {
     //async
 
     useEffect(() => {
-        debugger
         dispatch(getUser(username))
     }, [username])
 
 
     useEffect(() => {
-        debugger
         dispatch(getUserRepos({}))
     }, [user,currentPage])
 
