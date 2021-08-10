@@ -1,6 +1,3 @@
-import {usersAPI} from "../api/api";
-import {AppThunkType} from "./redux-store";
-
 //action types
 
 const SET_USER = 'SET_USER'
@@ -145,31 +142,5 @@ export const profileReducer = (state: ProfileStateType = initialState, action: P
     }
 }
 
-//thunks
+//sagas
 
-export const getUser = (userName: string, perPage: number, page: number): AppThunkType => (dispatch) => {
-    dispatch(setIsFetchingProfile(true))
-
-    let promises = [usersAPI.getUser(userName), usersAPI.getRepos(userName, perPage, page)]
-
-    Promise.all(promises)
-        .then(([userData, userRepos]) => {
-            dispatch(setUser(userData))
-            dispatch(setRepos(userRepos))
-            dispatch(setIsFetchingProfile(false))
-        })
-        .catch(error => {
-            dispatch(setUser(null))
-            dispatch(setIsNotFound(true))
-        })
-}
-
-export const getUserRepos = (userName: string, perPage: number, page: number): AppThunkType => (dispatch) => {
-    dispatch(setIsFetchingRepos(true))
-    usersAPI.getRepos(userName, perPage, page)
-        .then(userRepos => {
-            dispatch(setIsFetchingRepos(false))
-            dispatch(setCurrentPage(page))
-            dispatch(setRepos(userRepos))
-        })
-}

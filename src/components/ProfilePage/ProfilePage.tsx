@@ -4,13 +4,15 @@ import cls from './ProfilePage.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/redux-store";
 import {Preloader} from "../common/Preloader/Preloader";
-import {getUser, getUserRepos, RepoType, UserType} from "../../redux/profile-reducer";
+import {RepoType, UserType} from "../../redux/profile-reducer";
 import {useParams} from "react-router-dom";
 import noRepo from "./../../assets/images/noRepo.png"
 import {Repository} from "../Repository/Repository";
 import ReactPaginate from 'react-paginate';
 import {leftArrow, rightArrow} from "../../assets/pageArrows";
 import {PreloaderForRepos} from "../common/Preloader/PreloaderForRepos";
+import {getUser} from '../../redux/get-user-saga';
+import {getUserRepos} from '../../redux/get-user-repos-saga';
 
 export const ProfilePage = () => {
 
