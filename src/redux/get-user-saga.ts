@@ -5,7 +5,7 @@ import {RepoType, setIsFetchingProfile, setIsNotFound, setRepos, setUser, UserTy
 export function* getUserWS(action: any) {
     yield put(setIsFetchingProfile(true))
     try {
-        const userData: UserType = yield usersAPI.getUser(action.userName)
+        const userData: UserType = yield call(usersAPI.getUser, action.userName)
         const userRepos: Array<RepoType> = yield call(usersAPI.getRepos, action.userName, action.perPage, action.page)
         yield put(setUser(userData))
         yield put(setRepos(userRepos))
